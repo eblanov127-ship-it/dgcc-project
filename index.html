@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#071827" />
+<title>SpendWise — Your spending, made clear</title>
+<link rel="icon" type="image/png" href="icon.png" />
+<style>
+:root{color-scheme:dark;--bg:#061321;--card:rgba(15,38,60,.76);--card2:rgba(12,32,50,.65);--border:rgba(116,184,224,.13);--cyan:#39d8ee;--blue:#4f8fff;--text:#eef7ff;--muted:#91a7bb;--shadow:0 18px 50px rgba(0,0,0,.22}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(ellipse at 78% 8%,rgba(23,106,163,.3),transparent 42%),radial-gradient(ellipse at 12% 82%,rgba(0,176,207,.13),transparent 38%),linear-gradient(140deg,#04101d,#09223a 54%,#04101d);background-attachment:fixed}
+button{font:inherit;color:inherit;cursor:pointer}.wrap{max-width:1180px;margin:0 auto;padding:32px 24px 60px}.header{display:flex;align-items:center;gap:14px;margin-bottom:26px}.mark{width:50px;height:50px;border-radius:16px;background:linear-gradient(140deg,#2670ff,#2bd8ef);display:grid;place-items:center;box-shadow:0 8px 24px rgba(42,136,255,.28)}.mark svg{width:25px}.brand{font-size:27px;font-weight:750;letter-spacing:-.6px}.tagline{color:var(--muted);font-size:13px;margin-top:3px}.bell{margin-left:auto;width:48px;height:48px;border-radius:50%;border:1px solid var(--border);background:rgba(27,63,93,.5);display:grid;place-items:center;transition:.2s}.bell:hover{background:rgba(51,113,158,.55);transform:translateY(-1px)}.bell svg{width:19px}
+main{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(290px,1fr);gap:18px;align-items:start}.left,.right{display:flex;flex-direction:column;gap:18px}.glass{background:linear-gradient(135deg,rgba(21,54,81,.76),rgba(8,26,43,.77));border:1px solid var(--border);box-shadow:var(--shadow);backdrop-filter:blur(20px);border-radius:25px}.interactive{width:100%;text-align:left;transition:transform .18s,border-color .18s,background .18s}.interactive:hover{transform:translateY(-2px);border-color:rgba(57,216,238,.34);background:linear-gradient(135deg,rgba(25,68,101,.84),rgba(8,26,43,.82))}.balance{padding:25px}.eyebrow{font-size:12px;letter-spacing:.7px;color:var(--cyan);font-weight:750;display:flex;align-items:center;gap:9px}.chev{color:var(--muted);font-size:17px}.money{font-size:clamp(30px,4vw,43px);font-weight:760;letter-spacing:-1px;margin:19px 0 18px}.separator{height:1px;background:rgba(175,210,234,.13);margin-bottom:17px}.stats{display:flex;justify-content:space-between;gap:15px}.stat small{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}.stat strong{font-size:15px}.stat:last-child{text-align:right}.cyan{color:var(--cyan)}
+.summary{padding:22px}.rowhead{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}.rowhead h2{font-size:18px;margin:0 0 5px}.sub{font-size:14px;color:var(--muted)}.percent{font-weight:800;color:var(--cyan);font-size:22px}.track{height:7px;border-radius:999px;background:rgba(164,201,231,.13);margin:21px 0 20px;overflow:hidden}.fill{height:100%;width:69%;border-radius:inherit;background:linear-gradient(90deg,#388cff,#37d8ee);box-shadow:0 0 13px rgba(45,190,231,.3)}.minis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-dot{width:8px;height:8px;border-radius:50%;background:#39d8ee;margin-bottom:10px}.mini:nth-child(2) .mini-dot{background:#4d91ff}.mini:nth-child(3) .mini-dot{background:#8180f8}.mini label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px}.mini b{font-size:13px}
+.alert{display:flex;align-items:center;gap:14px;padding:16px}.alert-icon{width:45px;height:45px;border-radius:15px;background:rgba(31,134,196,.17);border:1px solid rgba(69,190,228,.14);display:grid;place-items:center;color:var(--cyan);flex-shrink:0}.alert-icon svg{width:22px}.alert-text{min-width:0}.alert-text b{font-size:14px;display:block;margin-bottom:4px}.alert-text span{font-size:12px;color:var(--muted);line-height:1.5}
+.section-title{font-size:18px;font-weight:750;margin:4px 0 12px}.category{padding:15px;display:flex;gap:13px;align-items:center;margin-bottom:10px}.cat-icon{width:43px;height:43px;border-radius:13px;background:rgba(53,192,226,.1);display:grid;place-items:center;flex-shrink:0;color:#37d7ef}.cat-icon svg{width:20px}.cat-info{flex:1;min-width:0}.cat-line{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.cat-line strong{font-size:14px}.cat-line span{font-size:14px;font-weight:750;white-space:nowrap}.small-track{height:5px;border-radius:999px;background:rgba(150,185,218,.14);overflow:hidden;margin-bottom:7px}.small-fill{height:100%;border-radius:inherit}.cat-foot{font-size:11px;color:var(--muted)}.cat-arrow{color:var(--muted);font-size:14px}
+.goal{padding:17px;display:flex;align-items:center;gap:14px}.circle{width:58px;height:58px;border-radius:50%;border:6px solid rgba(180,210,230,.14);border-top-color:#36d9ed;border-right-color:#36d9ed;border-bottom-color:#36d9ed;display:grid;place-items:center;flex-shrink:0;transform:rotate(-45deg)}.circle svg{width:20px;transform:rotate(45deg);color:var(--cyan)}.goal b{font-size:14px;display:block;margin-bottom:4px}.goal span{font-size:12px;color:var(--muted)}
+footer{text-align:center;color:rgba(150,178,202,.65);font-size:12px;margin-top:28px}
+/* modal */.overlay{position:fixed;inset:0;background:rgba(1,7,14,.68);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.overlay.open{display:flex}.modal{width:min(520px,100%);max-height:85vh;overflow:auto;background:linear-gradient(145deg,#112c43,#071827);border:1px solid rgba(110,188,226,.22);border-radius:25px;box-shadow:0 30px 90px rgba(0,0,0,.45)}.modal-head{display:flex;align-items:center;padding:20px 22px 16px;border-bottom:1px solid var(--border)}.modal-head h3{font-size:17px;margin:0}.close{margin-left:auto;border:0;background:rgba(170,205,230,.1);border-radius:50%;width:32px;height:32px;font-size:18px}.modal-body{padding:19px 22px}.total{font-size:27px;font-weight:800}.modal-caption{font-size:12px;color:var(--muted);margin-top:3px}.merchant{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid rgba(155,198,228,.1)}.merchant:last-child{border:0}.merchant-icon{width:36px;height:36px;border-radius:11px;background:rgba(68,137,204,.16);display:grid;place-items:center;color:#7bbaff}.merchant-name{font-size:14px;font-weight:650}.merchant-date{font-size:11px;color:var(--muted);margin-top:3px}.merchant-amt{margin-left:auto;font-size:13px;font-weight:700}
+@media(max-width:850px){.wrap{max-width:680px;padding:24px 18px 40px}main{grid-template-columns:1fr}.right{gap:14px}.money{font-size:37px}}
+@media(max-width:440px){.wrap{padding:18px 14px 34px}.brand{font-size:24px}.balance,.summary{padding:19px}.stats{gap:8px}.stat strong{font-size:14px}.category{padding:13px}.cat-line strong{font-size:13px}.cat-line span{font-size:13px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="header">
+  <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17.5 8.2 12l3.7 3.2L21 6.5"/><path d="M15.8 6.5H21v5.2"/></svg></div>
+  <div><div class="brand">SpendWise</div><div class="tagline">Your spending, made clear</div></div>
+  <button class="bell interactive glass" aria-label="Show recent spending" data-detail="Recent spending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg></button>
+</header>
+<main>
+  <section class="left">
+    <button class="glass interactive balance" data-detail="All spending">
+      <div class="eyebrow"><span>◈</span> AVAILABLE TO SPEND <span class="chev" style="margin-left:auto">›</span></div>
+      <div class="money">RM 2,846.60</div>
+      <div class="separator"></div>
+      <div class="stats"><div class="stat"><small>Monthly budget</small><strong>RM 1,800.00</strong></div><div class="stat"><small>Remaining</small><strong class="cyan">RM 554.80</strong></div></div>
+    </button>
+    <button class="glass interactive summary" data-detail="This month’s spending">
+      <div class="rowhead"><div><h2>This month</h2><div class="sub">RM 1,245.20 spent</div></div><div class="percent">69% <span class="chev">›</span></div></div>
+      <div class="track"><div class="fill"></div></div>
+      <div class="minis"><div class="mini"><div class="mini-dot"></div><label>Food</label><b>RM 432</b></div><div class="mini"><div class="mini-dot"></div><label>Travel</label><b>RM 184</b></div><div class="mini"><div class="mini-dot"></div><label>Shopping</label><b>RM 298</b></div></div>
+    </button>
+    <button class="glass interactive alert" data-detail="Shopping">
+      <div class="alert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.8 2.8 17a2 2 0 0 0 1.8 3h14.8a2 2 0 0 0 1.8-3L13.5 3.8a1.9 1.9 0 0 0-3.2 0Z"/><path d="M12 9v4m0 3h.01"/></svg></div><div class="alert-text"><b>Shopping is nearly at its limit</b><span>You’ve used 85% of this month’s budget.</span></div><span class="chev" style="margin-left:auto">›</span>
+    </button>
+  </section>
+  <section class="right">
+    <div><div class="section-title">Where your money went</div>
+      <button class="glass interactive category" data-detail="Food & drinks"><div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v7a4 4 0 0 0 4 4V3M7 3v11m4-11v8a4 4 0 0 0 4-4V3m2 0v18m4-18v18"/></svg></div><div class="cat-info"><div class="cat-line"><strong>Food &amp; drinks</strong><span>RM 432.80</span></div><div class="small-track"><div class="small-fill" style="width:79%;background:#34d7ed"></div></div><div class="cat-foot">RM 432.80 of RM 550.00</div></div><span class="cat-arrow">›</span></button>
+      <button class="glass interactive category" data-detail="Transport"><div class="cat-icon" style="color:#589bff;background:rgba(77,140,255,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l1-6-2-5H6l-2 5 1 6Z"/><path d="M6 17v3m12-3v3M6 11h12M7 15h2m6 0h2"/></svg></div><div class="cat-info"><div class="cat-line"><strong>Transport</strong><span>RM 184.00</span></div><div class="small-track"><div class="small-fill" style="width:61%;background:#4c91ff"></div></div><div class="cat-foot">RM 184.00 of RM 300.00</div></div><span class="cat-arrow">›</span></button>
+      <button class="glass interactive category" data-detail="Shopping"><div class="cat-icon" style="color:#8e8bff;background:rgba(133,126,255,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16l-1 13H5L4 8Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div><div class="cat-info"><div class="cat-line"><strong>Shopping</strong><span>RM 297.50</span></div><div class="small-track"><div class="small-fill" style="width:85%;background:#8986ff"></div></div><div class="cat-foot">RM 297.50 of RM 350.00</div></div><span class="cat-arrow">›</span></button>
+    </div>
+    <button class="glass interactive goal" data-detail="Goal contributions"><div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.5 12 6l10 10.5-10-3.5-10 3.5Z"/></svg></div><div><b>Japan trip</b><span>RM 3,600 saved of RM 5,000</span></div><span class="chev" style="margin-left:auto">›</span></button>
+  </section>
+</main>
+<footer>SpendWise demo · Sample data for presentation</footer>
+</div>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true"><div class="modal"><div class="modal-head"><h3 id="modalTitle">Spending details</h3><button class="close" id="close" aria-label="Close">×</button></div><div class="modal-body" id="modalBody"></div></div></div>
+<script>
+const merchantData={
+  "Food & drinks":[["The Coffee Bean","Today","RM 18.50","☕"],["GrabFood","Yesterday","RM 42.30","🥡"],["Village Grocer","14 Nov","RM 76.00","🛒"]],
+  "Transport":[["Grab","Today","RM 24.00","🚗"],["Shell","16 Nov","RM 80.00","⛽"],["Touch 'n Go","12 Nov","RM 15.00","🛣️"]],
+  "Shopping":[["Watsons","Today","RM 35.90","🧴"],["Uniqlo","15 Nov","RM 129.00","🛍️"],["Shopee","10 Nov","RM 56.40","📦"]],
+  "Recent spending":[["The Coffee Bean","Today","RM 18.50","☕"],["Grab","Today","RM 24.00","🚗"],["Watsons","Today","RM 35.90","🧴"]],
+  "All spending":[["The Coffee Bean","Today","RM 18.50","☕"],["GrabFood","Yesterday","RM 42.30","🥡"],["Village Grocer","14 Nov","RM 76.00","🛒"],["Grab","Today","RM 24.00","🚗"],["Shell","16 Nov","RM 80.00","⛽"],["Touch 'n Go","12 Nov","RM 15.00","🛣️"],["Watsons","Today","RM 35.90","🧴"],[["Uniqlo","15 Nov","RM 129.00","🛍️"]][0],["Shopee","10 Nov","RM 56.40","📦"]],
+  "This month’s spending":[["The Coffee Bean","Today","RM 18.50","☕"],["GrabFood","Yesterday","RM 42.30","🥡"],["Grab","Today","RM 24.00","🚗"],["Watsons","Today","RM 35.90","🧴"],["Uniqlo","15 Nov","RM 129.00","🛍️"]],
+  "Goal contributions":[["Japan trip savings","Monthly contribution","RM 250.00","✈️"],["Japan trip savings","Last contribution","RM 200.00","✈️"]]
+};
+const sums={"Food & drinks":"RM 127.80","Transport":"RM 119.00","Shopping":"RM 221.30","Recent spending":"RM 78.40","All spending":"RM 422.90","This month’s spending":"RM 250.70","Goal contributions":"RM 450.00"};
+function openDetails(title){const list=merchantData[title]||merchantData["All spending"];document.getElementById('modalTitle').textContent=title;const body=document.getElementById('modalBody');body.innerHTML=`<div class="total">${sums[title]||'RM 450.00'}</div><div class="modal-caption">Sample activity · stores and transactions</div><div style="margin-top:14px">${list.map(m=>`<div class="merchant"><div class="merchant-icon">${m[3]}</div><div><div class="merchant-name">${m[0]}</div><div class="merchant-date">${m[1]}</div></div><div class="merchant-amt">${m[2]}</div></div>`).join('')}</div>`;document.getElementById('overlay').classList.add('open')}
+document.querySelectorAll('[data-detail]').forEach(el=>el.addEventListener('click',()=>openDetails(el.dataset.detail)));
+document.getElementById('close').addEventListener('click',()=>document.getElementById('overlay').classList.remove('open'));
+document.getElementById('overlay').addEventListener('click',e=>{if(e.target.id==='overlay')e.target.classList.remove('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('overlay').classList.remove('open')});
+</script>
+</body></html>
